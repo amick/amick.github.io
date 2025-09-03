@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andy Amick - Author, Leader, Adventurer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #6aa84f 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation - Horizontal Layout */
+        nav {
+            background: #4a7c59;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #2d5016;
+            border-bottom-color: #8bc34a;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+            min-height: 60vh;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: #2d5016;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #6aa84f;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Professional Section */
+        .experience-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #6aa84f;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(106, 168, 79, 0.2);
+        }
+
+        .job-title {
+            color: #2d5016;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: #6aa84f;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .date-range {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Writing Section */
+        .book-showcase {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            width: 180px;
+            height: 270px;
+            background: linear-gradient(135deg, #2d5016 0%, #6aa84f 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .book-details h3 {
+            color: #2d5016;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .book-quote {
+            font-style: italic;
+            color: #6aa84f;
+            font-size: 1.2rem;
+            border-left: 4px solid #6aa84f;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(106, 168, 79, 0.05);
+            padding: 1rem 1rem 1rem 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6aa84f;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(106, 168, 79, 0.3);
+        }
+
+        .btn:hover {
+            background: #5d8f47;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 168, 79, 0.4);
+        }
+
+        /* Adventure Section */
+        .racing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .racing-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .racing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .racing-card h4 {
+            color: #2d5016;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            border-color: #6aa84f;
+            background: rgba(106, 168, 79, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .book-showcase {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+
+            .nav-btn:hover, .nav-btn.active {
+                border-left-color: #6aa84f;
+            }
+        }
+
+        /* Custom styling for placeholder content */
+        .placeholder-text {
+            background: linear-gradient(90deg, #e9ecef, #f8f9fa, #e9ecef);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #6aa84f;
+            font-style: italic;
+            color: #6c757d;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDI1MCAyNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjEyNSIgY3k9IjEyNSIgcj0iMTI1IiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIxMjUiIHk9IjEzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSI+WW91ciBDeWNsaW5nPC90ZXh0Pgo8dGV4dCB4PSIxMjUiIHk9IjE1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSI+UGhvdG8gSGVyZTwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMmQ1MDE2O3N0b3Atb3BhY2l0eToxIiAvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2YWE4NGY7c3RvcC1vcGFjaXR5OjEiIC8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+" 
+                     alt="Andy Amick" class="profile-photo" id="profile-photo">
+                <div class="hero-text">
+                    <h1>Andy Amick</h1>
+                    <div class="subtitle">Author • Leader • Adventurer</div>
+                    <p>Exploring the intersection of leadership, endurance, and the human spirit through words and adventure. Author of "A Dream Worth Living" and passionate about pushing boundaries both professionally and on the trail.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <button class="nav-btn active" onclick="showSection('about')">About</button>
+                <button class="nav-btn" onclick="showSection('professional')">Professional</button>
+                <button class="nav-btn" onclick="showSection('writing')">Writing</button>
+                <button class="nav-btn" onclick="showSection('adventure')">Adventure</button>
+                <button class="nav-btn" onclick="showSection('contact')">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <section id="about" class="content-section active">
+                <h2 class="section-title">About Andy</h2>
+                <div class="experience-item">
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        Welcome to my personal website. I'm Andy Amick, an author, leader, and adventure enthusiast who believes that our greatest challenges often lead to our most meaningful discoveries. 
+                    </p>
+                    <p style="margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                        Whether I'm navigating complex business challenges, crafting stories that inspire others, or pushing my limits on mountain bike trails, I'm driven by a passion for growth, resilience, and authentic connection. My journey has taken me from corporate boardrooms to the Continental Divide, and each experience has shaped my perspective on leadership, perseverance, and what it means to live a dream worth pursuing.
+                    </p>
+                    <p style="margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                        This site showcases my professional experience, my writing journey, and my adventures in endurance racing. I hope you find inspiration in these stories and perhaps discover your own dream worth living.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Professional Section -->
+            <section id="professional" class="content-section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="placeholder-text">
+                    <strong>Note:</strong> Please add your specific professional experience, education, and leadership roles here. The structure below provides a template you can customize with your actual career details.
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">[Your Current/Most Recent Position]</div>
+                    <div class="company">[Company Name]</div>
+                    <div class="date-range">[Start Date] - Present</div>
+                    <p>[Brief description of your role, key responsibilities, and notable achievements. Highlight leadership experience and quantifiable results where possible.]</p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">[Previous Position]</div>
+                    <div class="company">[Company Name]</div>
+                    <div class="date-range">[Start Date] - [End Date]</div>
+                    <p>[Description of role and key accomplishments.]</p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Education & Certifications</div>
+                    <p>[Add your educational background, relevant certifications, and professional development.]</p>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Core Competencies</div>
+                    <p>[List your key skills, areas of expertise, and leadership strengths.]</p>
+                </div>
+            </section>
+
+            <!-- Writing Section -->
+            <section id="writing" class="content-section">
+                <h2 class="section-title">Writing</h2>
+                
+                <div class="book-showcase">
+                    <div class="book-cover">
+                        <div>A Dream Worth Living</div>
+                    </div>
+                    <div class="book-details">
+                        <h3>A Dream Worth Living</h3>
+                        <div class="book-description">
+                            <p><strong>Finding Strength in the Depths of Struggle Along the Continental Divide</strong></p>
+                            <p>An inspiring account of the 2014 Tour Divide race - a grueling 2,700-mile mountain bike journey from Canada to Mexico along the Continental Divide. This book chronicles not just the physical challenges of climbing mountain after mountain, but the mental and emotional transformation that occurs when we push beyond what we thought possible.</p>
+                        </div>
+                        
+                        <div class="book-quote">
+                            "This is why we ride the Tour Divide. In the span of a few hours, you can go from the brink of exhaustion in the worst possible conditions to an explosion of sunshine, amazing people, and breathtaking scenery."
+                        </div>
+                        
+                        <div class="book-description">
+                            <p>Starting on Friday the 13th under a full moon and falling rain, this journey became more than just a race—it became a testament to human resilience, the power of community, and the extraordinary adventures that await when ordinary people refuse to accept ordinary limits.</p>
+                            
+                            <p><strong>What readers are saying:</strong></p>
+                            <p><em>"A very good read about ordinary people overcoming struggles resulting in extraordinary adventures that you can live vicariously, and sometimes painfully, through the author's experience."</em></p>
+                        </div>
+                        
+                        <a href="https://www.amazon.com/Dream-Worth-Living-Andy-Amick/dp/1539093611" target="_blank" class="btn">Get the Book on Amazon</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Adventure Section -->
+            <section id="adventure" class="content-section">
+                <h2 class="section-title">Adventure</h2>
+                
+                <div class="experience-item">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        Adventure racing and endurance sports have been integral to my personal and professional development. The lessons learned on the trail—about perseverance, strategic thinking, and mental resilience—directly translate to leadership challenges in the business world.
+                    </p>
+                </div>
+
+                <div class="racing-grid">
+                    <div class="racing-card">
+                        <h4>🚴‍♂️ Tour Divide 2014</h4>
+                        <p>Completed the legendary 2,700-mile mountain bike race from Banff, Alberta to Antelope Wells, New Mexico. This self-supported journey along the Continental Divide became the inspiration for "A Dream Worth Living."</p>
+                    </div>
+                    
+                    <div class="racing-card">
+                        <h4>🏔️ Mountain Biking</h4>
+                        <p>Passionate about technical trail riding, bikepacking adventures, and exploring remote wilderness areas. Always seeking new challenges and opportunities to push personal limits.</p>
+                    </div>
+                    
+                    <div class="racing-card">
+                        <h4>🎯 Endurance Philosophy</h4>
+                        <p>Believe that endurance sports teach valuable life lessons about goal-setting, mental fortitude, and the importance of preparation—skills that translate directly to professional success.</p>
+                    </div>
+                </div>
+
+                <div class="placeholder-text" style="margin-top: 2rem;">
+                    <strong>Customize this section:</strong> Add your specific racing achievements, upcoming events, training philosophy, or favorite trails and destinations. Include any race results, personal records, or memorable adventure stories you'd like to share.
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="experience-item">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        I'm always interested in connecting with fellow adventurers, readers, and professionals who share a passion for pushing boundaries and living authentically. Whether you'd like to discuss leadership, endurance sports, writing, or potential collaboration opportunities, I'd love to hear from you.
+                    </p>
+                    
+                    <div class="placeholder-text">
+                        <strong>Add your contact information:</strong> Include your preferred email address, phone number (if desired), and any other contact methods you'd like to make available.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/andyamick/" target="_blank">LinkedIn</a>
+                    <a href="https://www.amazon.com/Dream-Worth-Living-Andy-Amick/dp/1539093611" target="_blank">Amazon Author Page</a>
+                    <a href="mailto:[your-email]">[Your Email]</a>
+                </div>
+                <p>&copy; 2025 Andy Amick. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; opacity: 0.8;">Living the dream, one mile at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Replace placeholder profile photo with uploaded image
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can replace this data URL with your actual cycling photo
+            // For now, it shows a placeholder that you can easily replace
+            const profilePhoto = document.getElementById('profile-photo');
+            
+            // When you have your cycling photo ready, replace the src attribute
+            // profilePhoto.src = "path/to/your/cycling-photo.jpg";
+        });
+    </script>
+</body>
+</html>
