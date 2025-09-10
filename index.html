@@ -158,8 +158,20 @@
         }
 
         .experience-item:hover {
-            transform: translateX(5px);
+            /*transform: translateX(5px);*/
             box-shadow: 0 4px 15px rgba(106, 168, 79, 0.2);
+        }
+
+        .experience-item ul {
+            margin-left: 0;
+            padding-left: 1.2em;
+            margin-top: 0.5em;
+            margin-bottom: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.3em;
+            line-height: 1.4;
         }
 
         .job-title {
@@ -355,7 +367,7 @@
             border-left: 4px solid #6aa84f;
             font-style: italic;
             color: #6c757d;
-            margin: 1rem 0;
+            margin: 1rem 0rem 3rem 0rem;
         }
     </style>
 </head>
@@ -391,7 +403,7 @@
                 <h2 class="section-title">About Andy</h2>
                 <div class="experience-item">
                     <p style="font-size: 1.2rem; line-height: 1.8;">
-                        Welcome to my personal website. I'm Andy Amick, an author, leader, and adventure enthusiast who believes that our greatest challenges often lead to our most meaningful discoveries. 
+                        I'm Andy Amick, an author, leader, and adventure enthusiast who believes that our greatest challenges often lead to our most meaningful discoveries. 
                     </p>
                     <p style="margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
                         Whether I'm navigating complex business challenges, crafting stories that inspire others, or pushing my limits on mountain bike trails, I'm driven by a passion for growth, resilience, and authentic connection. My journey has taken me from corporate boardrooms to the Continental Divide, and each experience has shaped my perspective on leadership, perseverance, and what it means to live a dream worth pursuing.
@@ -407,31 +419,76 @@
                 <h2 class="section-title">Professional Experience</h2>
                 
                 <div class="placeholder-text">
-                    <strong>Note:</strong> Please add your specific professional experience, education, and leadership roles here. The structure below provides a template you can customize with your actual career details.
+                    Engineering leader with 20+ years turning complex problems into sustainable solutions. Specializes in scaling real-time data platforms (Kafka, Spark, AWS) while building teams known for technical excellence and strong collaboration. My track record includes maintaining 99.9% uptime, staying on budget, and creating workplaces where people thrive - not just survive.
                 </div>
 
                 <div class="experience-item">
-                    <div class="job-title">[Your Current/Most Recent Position]</div>
-                    <div class="company">[Company Name]</div>
-                    <div class="date-range">[Start Date] - Present</div>
-                    <p>[Brief description of your role, key responsibilities, and notable achievements. Highlight leadership experience and quantifiable results where possible.]</p>
+                    <div class="job-title">Senior Director - Data Pipelines</div>
+                    <div class="company">Charter Communications</div>
+                    <div class="date-range">2020 - 2025</div>
+                    <ul>
+                        <li>Collaborated across product domains to deliver realtime analytics for 500+ users (network triage, product rollout tracking, and video stream analysis)</li>
+                        <li>Maintained 99.9% uptime across all production systems as daily message volume grew from 5 billion to over 80 billion and team scaled from 12 to 45 members</li>
+                        <li>Managed 8M cloud budget, delivering 10% yearly cost optimizations while initiating company first innovation sprints and chaos engineering principles</li>
+                    </ul>
                 </div>
 
                 <div class="experience-item">
-                    <div class="job-title">[Previous Position]</div>
-                    <div class="company">[Company Name]</div>
-                    <div class="date-range">[Start Date] - [End Date]</div>
-                    <p>[Description of role and key accomplishments.]</p>
+                    <div class="job-title">Director - Data Pipelines</div>
+                    <div class="company">Charter Communications</div>
+                    <div class="date-range">2019 - 2020</div>
+                    <ul>
+                        <li>Completed migrations to employ Infrastructure as Code (Terraform), Observability (Datadog), and service level objectives in all pipeline components</li>
+                        <li>Evolved data pipelines to support data increase from 1 billion to 5 billion per day</li>
+                    </ul>
                 </div>
 
                 <div class="experience-item">
-                    <div class="job-title">Education & Certifications</div>
-                    <p>[Add your educational background, relevant certifications, and professional development.]</p>
+                    <div class="job-title">Principal Engineer I</div>
+                    <div class="company">Charter Communications</div>
+                    <div class="date-range">2017 - 2019</div>
+                    <ul>
+                        <li>Migrated data pipelines between AWS accounts with zero downtime, and expanded observability scope to support yearly SLO tracking</li>
+                        <li>Delivered autoscaling optimizations to provide more resilient platform</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Senior Software Engineer</div>
+                    <div class="company">Sovrn</div>
+                    <div class="date-range">2016 - 2017</div>
+                    <ul>
+                        <li>Led project to deliver Flink/Kafka based stream processing and aggregation of 7 billion messages per day for use by sales and marketing teams</li>
+                        <li>Developed Java API to abstract storage systems (Redis, Cassandra, Aerospike)</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Data Engineer</div>
+                    <div class="company">Encana Oil & Gas</div>
+                    <div class="date-range">2006 - 2016</div>
+                    <ul>
+                        <li>Created daily production volume system, delivering accurate data to field users</li>
+                        <li>Developed first US division data warehouse and self-service reporting</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Education</div>
+                    <p>BS, Electical and Computer Engineering</p>
+                    <p>University of Colorado, Boulder</p>
+                    <p>1997</p>
                 </div>
 
                 <div class="experience-item">
                     <div class="job-title">Core Competencies</div>
-                    <p>[List your key skills, areas of expertise, and leadership strengths.]</p>
+                        <div class="company">Leadership</div>
+                        <p style="margin-bottom: 1.5rem;">Team Culture, Operational Excellence, Strategic Planning, Budget Management</p>
+                        <div class="company">Cloud (AWS)</div>
+                        <p style="margin-bottom: 1.5rem;">ECS/EKS, Elasticache/Dynamo, Kinesis, FinOps, EMR</p>
+                        <div class="company">Data Processing</div>
+                        <p style="margin-bottom: 1.5rem;">Kafka, Terraform, Spark, Datadog, Druid/Pinot, Java/Scala, Snowflake</p>
+                    </div>
                 </div>
             </section>
 
